@@ -81,18 +81,28 @@ router.put("/update/:id", (req, res) => {
 
   const found = contacts.some(contact => contact.id === parseInt(req.params.id));
   if (found) {
+    changed=false;
     const updatedContact = req.body.contact;
     let i=0;
     contacts.forEach(contact => {
       if (contact.id === parseInt(req.params.id)) {
-        contacts[i]=updatedContact;
+        //has something changed?
+        if(JSON.stringify(contacts[i])!==JSON.stringify(updatedContact)){
+          contacts[i]=updatedContact;
+          changed=true;
+        }
       }
       i++;
     });
     //make it "persistent"
-    fs.writeFile(__dirname+"/contacts_data.json", JSON.stringify(contacts),()=>{
-      res.json(true);
-    });
+    if(changed===true){
+      fs.writeFile(__dirname+"/contacts_data.json", JSON.stringify(contacts),()=>{
+        res.json(true);
+      });
+    }
+    else{
+      res.json(false);
+    }
   }
   else {
     res.sendStatus(404);
