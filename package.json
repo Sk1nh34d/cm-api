@@ -1,0 +1,25 @@
+{
+  "name": "cm-api",
+  "version": "1.0.0",
+  "description": "rest api for contact manager",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sk1nh34d/cm-api.git"
+  },
+  "author": "cfauner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sk1nh34d/cm-api/issues"
+  },
+  "homepage": "https://github.com/Sk1nh34d/cm-api#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {}
+}
